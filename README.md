@@ -75,12 +75,53 @@ updatetime:扫描更新时间(str)
 
 ## 主页截图
 
-1. 端口与协议发现
+1. 端口与协议发现TOP10
    ![端口发现TOP10](./img/port.png)
    ![协议发现TOP10](./img/protocol.png)
+2 .风险端口与协议发现TOP10
    ![风险端口发现TOP10](./img/riskport.png)
    ![风险协议发现TOP10](./img/riskprotocol.png)
-2. web发现
+3. web指纹收集TOP10
    ![Web指纹收集TOP10](./img/webfinger.png)
+4. xray扫描规则统计TOP10
    ![xay扫描风险TOP10](./img/xray.png)
+5. web ssl证书扫描TOP10
    ![SSL证书TOP10](./img/ssl.png)
+
+## 部署方式
+### 部署前环境准备(示例系统:Centos7)
+1 .python3
+2 .mysql或mariadb,新建一个数据库,选择utf-8编码
+### 部署过程
+1 .配置文件修改，工具有2个配置文件，为控制系统与数据库连接的serverconfig.py和控制扫描参数的scanConfig.py
+
+serverconfig.py
+```
+# 系统基础参数
+API_PORT = 80  # 设置为你希望开放的服务端口
+# mysql配置
+MYSQL_HOST = '127.0.0.1'  # 此处修改为你的数据库IP地址
+MYSQL_PORT = 3306  # 此处修改为数据库端口
+MYSQL_USER = 'root'  # 数据库连接用户名
+MYSQL_PASSWORD = 'password'  # 数据库连接密码
+MYSQL_DATABASE = 'IPWarden'  # 库名
+```
+scanConfig.py
+```
+# masscan参数
+SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
+SCAN_PORT = '1-10000,11211,27017,27018,50000,50070,50030'  # 设置扫描的端口范围，同masscan参数格式，首次扫描建议使用默认参数，后期可以改为1-65535
+RATE = '5000'  # 扫描线程 注意不要在需要SNAT出口的情况扫描，并发会影响出口网络，使用独占IP扫描
+SCAN_WHITE_LIST = '192.168.3.4'  # 不扫描的ip白名单,格式同SCAN_IP
+# 定义Web端口
+WEB_PORT = ['80-90', '443', '3000-4000', '7000-10000']
+# Web管理后台关键词
+WEB_BACKSTAGE = ['login', 'admin', '登录', '管理后台', '系统后台', '管理系统']
+# 风险端口白名单,配置例外,使用序号5api请求返回数据不包含以下ip:端口
+RISK_PORT_WHITE_LIST = [
+    ['192.25.86.1x', '3306'],
+    ['192.25.86.13x', '22'],
+]
+# 定义风险端口
+RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
+```
