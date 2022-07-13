@@ -26,16 +26,16 @@ IPWarden是一个IP资产风险发现工具，确定目标IP/网段后即可循�
 
 | 序号 | Api用途                  | 方法 | url                               | 请求参数     | 返回字段                                                  | 返回格式 |
 | ---- | ------------------------ | ---- | --------------------------------- | ------------ | --------------------------------------------------------- | -------- |
-| 1    | 查询全部IP开放端口数据   | GET  | http://172.16.98.138/portsdata    | 无           | ip, port, protocol, updatetime                            | json     |
-| 2    | 查询指定ip开放的端口     | GET  | http://172.16.98.138/ip=?         | ip(string)   | port, protocol, updatetime                                | json     |
-| 3    | 查询开放指定端口的ip     | GET  | http://172.16.98.138/port=?       | port(string) | ip, updatetime                                            | json     |
-| 4    | 查询全部风险端口数据     | GET  | http://172.16.98.138/riskports    | 无           | 同序号1                                                   | json     |
-| 5    | 查询白名单外风险端口数据 | GET  | http://172.16.98.138/newriskports | 无           | 同序号1                                                   | json     |
-| 6    | 查询SSL证书数据          | GET  | http://172.16.98.138/ssl          | 无           | ip, url, common_name, start_date, expire_date, updatetime | json     |
-| 7    | Web站点探测              | GET  | http://172.16.98.138/web          | 无           | ip, url, title, backstage, updatetime                     | json     |
-| 8    | Web Finger信息           | GET  | http://172.16.98.138/webfinger    | 无           | url, title, webfinger, updatetime                         | json     |
-| 9    | Web管理后台站点探测      | GET  | http://172.16.98.138/backstage    | 无           | 同序号7                                                   | json     |
-| 10   | Xray扫描                 | GET  | http://172.16.98.138/xray         | 无           | url, payload, plugin, request, updatetime                 | json     |
+| 1    | 查询全部IP开放端口数据   | GET  | http://127.0.0.1/portsdata    | 无           | ip, port, protocol, updatetime                            | json     |
+| 2    | 查询指定ip开放的端口     | GET  | http://127.0.0.1/ip=?         | ip(string)   | port, protocol, updatetime                                | json     |
+| 3    | 查询开放指定端口的ip     | GET  | http://127.0.0.1/port=?       | port(string) | ip, updatetime                                            | json     |
+| 4    | 查询全部风险端口数据     | GET  | http://127.0.0.1/riskports    | 无           | 同序号1                                                   | json     |
+| 5    | 查询白名单外风险端口数据 | GET  | http://127.0.0.1/newriskports | 无           | 同序号1                                                   | json     |
+| 6    | 查询SSL证书数据          | GET  | http://127.0.0.1/ssl          | 无           | ip, url, common_name, start_date, expire_date, updatetime | json     |
+| 7    | Web站点探测              | GET  | http://127.0.0.1/web          | 无           | ip, url, title, backstage, updatetime                     | json     |
+| 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无           | url, title, webfinger, updatetime                         | json     |
+| 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无           | 同序号7                                                   | json     |
+| 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无           | url, payload, plugin, request, updatetime                 | json     |
 
 ### API返回参数说明
 ```
