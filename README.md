@@ -128,6 +128,8 @@ RISK_PORT_WHITE_LIST = [
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 2 .进入IPWarden路径下，使用如下命令后台执行runIPWarden.py开始循环监控，如果目标ip较多，可能会持续数个小时结束第一轮才有数据，建议大半天再回来看结果，循环监控扫描可以不用管它自己跑就行，更改配置文件需要重新执行以下命令重启
+
+runIPWarden.py自带导入python依赖，如果导入出错建议更新pip3
 ```
 nohup python3 runIPWarden.py &
 ```
