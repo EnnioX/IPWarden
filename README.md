@@ -37,20 +37,40 @@ PS:工作与学习中接触过一些不错的开源安全工具，使用过程�
 
 ### API返回参数说明
 ```
-ip:ip地址
-port:端口
-protocol:端口协议
-url:访问地址
-common_name:ssl证书名称
-start_date:ssl证书开始日期
-expire_date:ssl证书结束日期
-title:网站标题
-backstage:如果值为1识别为web管理后台，否则为0
-webfinger:web指纹资产,如"nginx"
-payload:xray扫描poc
-plugin:xray扫描规则
-request:xray扫描请求头
-updatetime:扫描更新时间
+ip:ip地址(str)
+port:端口(str)
+protocol:端口协议(str)
+url:访问地址(str)
+common_name:ssl证书名称(str)
+start_date:ssl证书开始日期(str)
+expire_date:ssl证书结束日期(str)
+title:网站标题(str)
+backstage:如果值为1识别为web管理后台，否则为0(int)
+webfinger:web指纹资产,如"nginx"(str)
+payload:xray扫描poc(str)
+plugin:xray扫描规则(str)
+request:xray扫描请求头(str)
+updatetime:扫描更新时间(str)
+```
+
+### Web站点探测API返回参数示例
+```
+[
+   {
+      "ip": "192.168.1.1"
+      "url": "http://192.168.0.1:7070/"
+      "title": "巧克力真好吃"
+      "backstage": 0
+      "updatetime": "2022-07-13 13:13:58"
+   }
+   {
+      "ip": "192.168.1.2"
+      "url": "http://example.com/"
+      "title": "XXX管理后台"
+      "backstage": 1。# 值为1代表识别为管理后台
+      "updatetime": "2022-07-13 13:13:58"
+   }
+]
 ```
 
 ## 主页截图
