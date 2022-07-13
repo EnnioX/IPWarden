@@ -82,5 +82,5 @@ updatetime:扫描更新时间(str)
    ![风险协议发现TOP10](./img/riskprotocol.png)
 2. web发现
    ![Web指纹收集TOP10](./img/webfinger.png)
-   ![xay扫描风险TOP10](./img/xary.png)
+   ![xay扫描风险TOP10](./img/xray.png)
    ![SSL证书TOP10](./img/ssl.png)
