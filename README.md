@@ -2,6 +2,8 @@
 
 在开始使用之前，请务必阅读并同意[免责声明](Disclaimer.md)中的条款，否则请勿下载使用本工具。
 
+下载地址:https://github.com/lzhandlzh/IPWarden/releases/tag/IPWarden1.0
+
 ## 简介
 
 IPWarden是一个IP资产风险发现工具，确定目标IP/网段后即可循环扫描更新结果，扫描产生的数据结果均可通过API获取，方便调用与加工。适合甲方安全人员管理公网/内网资产安全风险暴露面，渗透测试人员用于信息收集和攻击面探测
