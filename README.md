@@ -89,7 +89,7 @@ updatetime:扫描更新时间(str)
    ![SSL证书TOP10](./img/ssl.png)
 
 ## 部署方式
-### 部署前环境准备(测试系统:Centos7)
+### 部署前环境准备(Centos7)
 1 .python3
 
 2 .mysql或mariadb，新建一个数据库，选择utf-8编码
