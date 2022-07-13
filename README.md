@@ -6,7 +6,7 @@
 
 IPWarden是一个网络风险发现扫描工具，确定目标IP/网段后即可循环扫描监控或单次扫描，扫描产生的数据结果均可通过API获取，方便调用与加工。适合甲方安全人员管理公网/内网资产安全风险暴露面，渗透测试人员用于信息收集和攻击面探测
 
-PS:工作与学习中接触过一些不错的开源安全工具，使用过程中想如果数据结果可以方便脚本调用做二次处理就更好了，所以开发了这个通过调用api返回json格式数据结果的风险发现扫描工具，方便甲方安全人员在扫描结果基础上灵活开发新功能，例如：高危端口发现告警，自动化端口安全测试，ssl证书配置监控等
+PS:工作与学习中接触过一些不错的开源安全工具，使用过程中想如果数据结果可以方便脚本调用做二次处理就更好了，所以开发了这个通过调用api返回json格式数据结果的风险发现扫描工具，方便甲方安全人员在扫描结果基础上灵活开发新功能，例如：风险资产新发现告警，自动化端口安全测试，ssl证书配置监控等
 
 ## 功能
 
@@ -34,6 +34,24 @@ PS:工作与学习中接触过一些不错的开源安全工具，使用过程�
 | 8    | Web Finger信息           | GET  | http://172.16.98.138/webfinger    | 无           | url, title, webfinger, updatetime                         | json     |
 | 9    | Web管理后台站点探测      | GET  | http://172.16.98.138/backstage    | 无           | 同序号7                                                   | json     |
 | 10   | Xray扫描                 | GET  | http://172.16.98.138/xray         | 无           | url, payload, plugin, request, updatetime                 | json     |
+
+### API返回参数说明
+```
+ip:ip地址
+port:端口
+protocol:端口协议
+url:访问地址
+common_name:ssl证书名称
+start_date:ssl证书开始日期
+expire_date:ssl证书结束日期
+title:网站标题
+backstage:如果值为1识别为web管理后台，否则为0
+webfinger:web指纹资产,如"nginx"
+payload:xray扫描poc
+plugin:xray扫描规则
+request:xray扫描请求头
+updatetime:扫描更新时间
+```
 
 ## 主页截图
 
