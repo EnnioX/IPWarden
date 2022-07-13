@@ -93,9 +93,10 @@ updatetime:扫描更新时间(str)
 1 .python3
 
 2 .mysql或mariadb，新建一个数据库，选择utf-8编码
+
 注意；如果扫描公网IP，注意不要在需要SNAT方式访问公网的服务器上部署，masscan扫描并发会影响出口网络
 ### 部署过程
-1 .配置文件修改，工具有2个配置文件，为设置系统服务与数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
+1 .进入IPWarden路径下进行配置文件修改，工具有2个配置文件，为设置系统服务与数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
 serverConfig.py
 ```
@@ -127,7 +128,7 @@ RISK_PORT_WHITE_LIST = [
 # 定义风险端口
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
-2 .进入IPWarden路径下，使用如下命令后台执行runIPWarden.py开始循环监控，如果目标ip较多，可能会持续数个小时结束第一轮才有数据，建议大半天再回来看结果，循环监控扫描可以不用管它自己跑就行，更改配置文件需要重新执行以下命令重启
+2 .配置文件修改好后，进入IPWarden文件夹路径下使用如下命令后台执行runIPWarden.py开始循环监控，如果目标ip较多，可能会持续数个小时结束第一轮才有数据，建议大半天再回来看结果，循环扫描可以不用管让它自己跑，更改配置文件需要重新执行以下命令重启
 
 runIPWarden.py自带导入python依赖，如果导入出错建议更新pip3
 ```
