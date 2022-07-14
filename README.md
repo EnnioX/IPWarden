@@ -90,7 +90,7 @@ updatetime:扫描更新时间(str)
 5 . web ssl证书扫描TOP10
    ![SSL证书TOP10](./img/ssl.png)
 
-## 部署方式(Centos7)
+## 部署方式
 ### 部署前环境准备
 1 .python3
 
