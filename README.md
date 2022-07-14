@@ -55,7 +55,7 @@ request:xray扫描http请求(str)
 updatetime:扫描更新时间(str)
 ```
 
-### Web站点探测API返回参数示例
+### Web站点探测API返回示例
 ```
 [
    {
