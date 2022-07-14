@@ -75,6 +75,26 @@ updatetime:扫描更新时间(str)
 ]
 ```
 
+### xray扫描API返回示例
+```
+[
+   {
+      "url": "https://1x3.x1.xx0.2x8:443/"
+      "payload": "/admin.do"
+      "plugin": "dirscan/admin/default"
+      "request": "GET /admin.do HTTP/1.1\r\nHost: 1x3.x1.xx0.2x8:443\r\nUser-..."
+      "updatetime": "2022-07-13 19:11:03"
+   }
+   {
+      "url": "http://x4.x3.1x2.x99/admin/login.jsp"
+      "payload": ""
+      "plugin": "baseline/sensitive/server-error"
+      "request": "GET /admin/mailsms/s?func=ADMIN:appState&dumpConfig=/ HTTP/1.1\r\nHo..."
+      "updatetime": "2022-07-13 19:18:00"
+   }
+]
+```
+
 ## 主页截图
 
 1 . 端口与协议发现TOP10
@@ -93,10 +113,7 @@ updatetime:扫描更新时间(str)
 ## 部署方式
 ### 部署前环境准备
 1 .python3
-
-2 .部署环境安装masscan
-
-3 .mysql或mariadb，新建一个数据库，选择utf-8编码
+2 .mysql或mariadb数据库，选择utf-8编码
 
 注意；如果扫描公网IP，不要在需要SNAT方式访问公网的服务器上部署，masscan扫描并发会影响出口占用
 ### 部署过程
@@ -131,7 +148,7 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 2 .配置文件修改好后，进入IPWarden文件夹路径下使用如下命令后台执行runIPWarden.py开始循环监控
 
-runIPWarden.py自带导入python依赖，如果导入出错建议更新pip3
+runIPWarden.py自带导入打包好的python whl依赖
 ```
 nohup python3 runIPWarden.py &
 ```
