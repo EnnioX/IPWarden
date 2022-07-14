@@ -2,7 +2,7 @@
 
 在开始使用之前，请务必阅读并同意[免责声明](Disclaimer.md)中的条款，否则请勿下载使用本工具。
 
-下载地址:https://github.com/lzhandlzh/IPWarden/releases/tag/IPWarden1.0
+下载地址:https://github.com/EnnioX/IPWarden/releases/tag/IPWarden1.0
 
 ## 简介
 
