@@ -98,7 +98,7 @@ updatetime:扫描更新时间(str)
 
 3 .mysql或mariadb，新建一个数据库，选择utf-8编码
 
-注意；如果扫描公网IP，注意不要在需要SNAT方式访问公网的服务器上部署，masscan扫描并发会影响出口占用
+注意；如果扫描公网IP，不要在需要SNAT方式访问公网的服务器上部署，masscan扫描并发会影响出口占用
 ### 部署过程
 1 .进入IPWarden路径下进行配置文件修改，工具有2个配置文件，为设置系统服务与数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
