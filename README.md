@@ -90,7 +90,9 @@ updatetime:扫描更新时间(str)
 5 . web ssl证书扫描TOP10
    ![SSL证书TOP10](./img/ssl.png)
 
-## 部署方式
+## 部署方式1[docker-compose]
+未完成
+## 部署方式2[直接部署]
 ### 部署前环境准备(Centos7)
 1 .python3
 
@@ -105,7 +107,7 @@ updatetime:扫描更新时间(str)
 serverConfig.py
 ```
 # 系统基础参数
-API_PORT = 80  # 设置为你希望开放的服务端口
+API_PORT = 80  # 设置为希望开放的服务端口
 # mysql配置
 MYSQL_HOST = '127.0.0.1'  # 此处修改为你的数据库IP地址
 MYSQL_PORT = 3306  # 此处修改为数据库端口
