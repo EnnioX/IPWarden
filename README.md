@@ -118,7 +118,7 @@ IPWarden是一个IP资产风险发现工具，对目标IP循环扫描更新结�
 
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器，否则可能会影响SNAT出口网络，内网扫描可忽略这点
 ### 部署过程
-1 .进入IPWarden路径下进行配置文件修改，工具有2个配置文件，为设置系统服务与数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
+1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
 serverConfig.py
 ```
@@ -152,18 +152,21 @@ RISK_PORT_WHITE_LIST = [['192.25.86.1x', '3306'],['192.25.86.13x', '22']]
 # 定义风险端口
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
-2 .配置文件修改好后，进入IPWarden文件夹路径下使用如下命令后台执行runIPWarden.py开始循环监控
-
-runIPWarden.py自带导入python依赖，建议先更新pip源
+2 .配置文件设置好后，建议先更新pip源，如已更新可跳过
 ```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
+3 .IPWarden目录下的runIPWarden.py自带导入python依赖，建议先更新pip源
+```
+pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+```
+在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控
 ```
 nohup python3 runIPWarden.py &
 ```
 服务启动后，可通过 "http://ip:port" (配置文件默认80端口)访问主页，如果目标ip较多，第一次执行可能会持续数个小时结束第一轮才有数据可以访问，建议大半天再回来看结果，后续循环扫描可以不用管让它自己更新页面，更改配置文件需要重新执行如上命令重启
 
-3 .停止服务，使用如下命令执行IPWarden路径下kill.sh文件
+停止服务，在IPWarden目录下使用如下命令执行kill.sh文件
 ```
 ./kill.sh
 ```
