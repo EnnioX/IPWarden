@@ -154,7 +154,10 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 2 .配置文件修改好后，进入IPWarden文件夹路径下使用如下命令后台执行runIPWarden.py开始循环监控
 
-runIPWarden.py自带导入打包好的python whl依赖
+runIPWarden.py自带导入python依赖，建议先更新pip源
+```
+pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+```
 ```
 nohup python3 runIPWarden.py &
 ```
