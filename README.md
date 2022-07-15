@@ -125,7 +125,7 @@ serverConfig.py
 API_PORT = 80  # 设置为希望开放的服务端口
 
 # mysql配置
-MYSQL_HOST = '127.0.0.1'  # 此处修改为你的数据库IP地址
+MYSQL_HOST = '127.0.0.1'  # 此处修改为数据库IP地址
 MYSQL_PORT = 3306  # 此处修改为数据库端口
 MYSQL_USER = 'root'  # 数据库连接用户名
 MYSQL_PASSWORD = 'password'  # 数据库连接密码
