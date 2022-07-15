@@ -158,16 +158,18 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
 
-3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控
+3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改配置文件后需要先用kill.sh停止服务再重新执行命令重启
 ```
 nohup python3 runIPWarden.py &
 ```
-服务启动后，可通过 "http://ip:port" (配置文件默认80端口)访问主页，如果目标ip较多，第一次执行可能会持续数个小时结束第一轮才有数据可以访问，建议大半天再回来看结果，后续循环扫描可以不用管让它自己更新页面，更改配置文件需要重新执行如上命令重启
 
-停止服务，在IPWarden目录下使用如下命令执行kill.sh文件
+停止服务：在IPWarden目录下使用如下命令执行kill.sh文件
 ```
 ./kill.sh
 ```
+
+服务启动后，默认循环启动所有扫描，坐等通过api收集数据就行。如果目标ip较多，每轮扫描的时间会比较长，第一次扫描建议大半天后再回来看结果
+
 ## 使用反馈
 使用过程中如有疑问或建议，欢迎添加开发者微信交流:Ennio404
 
