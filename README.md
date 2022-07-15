@@ -54,7 +54,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
    updatetime : 扫描更新时间(str)
 ```
 
-### Web站点探测API返回示例
+### Web站点探测API返回示例（http://127.0.0.1/web）
 ```
 [
    {
@@ -74,7 +74,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 ]
 ```
 
-### xray扫描API返回示例
+### xray扫描API返回示例（http://127.0.0.1/xray）
 ```
 [
    {
