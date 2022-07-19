@@ -4,6 +4,8 @@
 
 下载地址:https://github.com/EnnioX/IPWarden/releases/tag/IPWarden
 
+演示站点:http://114.132.252.84/
+
 ## 简介
 
 IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环扫描更新结果，特点在于发现目标IP范围的Web资产与管理后台并自动调用xray扫描，将扫描产生的数据结果通过API返回，方便二次加工。适合甲方安全人员管理公网/内网资产安全风险暴露面，渗透测试人员用于信息收集和攻击面探测。集成的工具有:nmap、masscan、TideFinger、xray
