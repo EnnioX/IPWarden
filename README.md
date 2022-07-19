@@ -22,9 +22,8 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 
 ## API
 
-
-| 序号 | Api用途                  | 方法 | url                               | 请求参数     | 返回字段                                                  | 返回格式 |
-| ---- | ------------------------ | ---- | --------------------------------- | ------------ | --------------------------------------------------------- | -------- |
+| 序号 | Api用途                  | 方法 | url                           | 请求参数     | 返回字段                                                  | 返回格式 |
+| ---- | ------------------------ | ---- | ----------------------------- | ------------ | --------------------------------------------------------- | -------- |
 | 1    | 查询全部IP开放端口数据   | GET  | http://127.0.0.1/portsdata    | 无           | ip, port, protocol, updatetime                            | json     |
 | 2    | 查询指定ip开放的端口     | GET  | http://127.0.0.1/ip=?         | ip(string)   | port, protocol, updatetime                                | json     |
 | 3    | 查询开放指定端口的ip     | GET  | http://127.0.0.1/port=?       | port(string) | ip, updatetime                                            | json     |
@@ -35,9 +34,11 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 | 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无           | url, title, webfinger, updatetime                         | json     |
 | 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无           | 同序号7                                                   | json     |
 | 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无           | url, payload, plugin, request, updatetime                 | json     |
+| 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无           | url, cms, title, updatetime                               | json     |
+| 12   | 下载所有数据xlsx表格     | GET  | http://127.0.0.1/xlsx         | 无           |                                                           | xlsx     |
 
 ### API返回参数说明
-```
+
    ip : ip地址(str)
    port : 端口(str)
    protocol : 端口协议(str)
@@ -52,9 +53,9 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
    plugin : xray扫描规则(str)
    request : xray扫描http请求(str)
    updatetime : 扫描更新时间(str)
-```
 
 ### Web站点探测API返回示例（http://127.0.0.1/web）
+
 ```
 [
    {
@@ -75,6 +76,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 ```
 
 ### xray扫描API返回示例（http://127.0.0.1/xray）
+
 ```
 [
    {
@@ -110,16 +112,21 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
    ![SSL证书TOP10](./img/ssl.png)
 
 ## 部署方式
+
 ### 部署前环境准备
+
 1 .python3
 
 2 .mysql或mariadb数据库，选择utf-8编码
 
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器，否则可能会影响SNAT出口网络，内网扫描可忽略这点
+
 ### 部署过程
+
 1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
 serverConfig.py
+
 ```
 # 系统基础参数
 API_PORT = 80  # 设置为希望开放的服务端口
@@ -131,7 +138,9 @@ MYSQL_USER = 'root'  # 数据库连接用户名
 MYSQL_PASSWORD = 'password'  # 数据库连接密码
 MYSQL_DATABASE = 'IPWarden'  # 库名
 ```
+
 scanConfig.py
+
 ```
 # masscan参数
 SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
@@ -153,16 +162,19 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
 2 .配置文件设置好后，建议先更新pip源，如已更新可跳过
+
 ```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
 
 3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改配置文件后需要先用kill.sh停止服务再重新执行命令重启
+
 ```
 nohup python3 runIPWarden.py &
 ```
 
 停止服务：在IPWarden目录下使用如下命令执行kill.sh文件
+
 ```
 ./kill.sh
 ```
@@ -172,5 +184,3 @@ nohup python3 runIPWarden.py &
 ## 使用反馈
 
 欢迎师傅们沟通使用过程中的问题或建议～
-
-
