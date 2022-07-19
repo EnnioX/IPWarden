@@ -18,7 +18,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 4. Web管理后台识别
 5. Xray漏洞扫描
 6. SSL证书信息扫描
-7. 首页汇总数据生成TOP10统计图
+7. 首页汇总数据生成统计图
 
 ## API
 
@@ -49,6 +49,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
    title : 网站标题(str)
    backstage : 如果值为1识别为web管理后台，否则为0(int)
    webfinger : web指纹资产,如"nginx"(str)
+   cms : web cms识别,如ThinkPHP(str)
    payload : xray扫描poc(str)
    plugin : xray扫描规则(str)
    request : xray扫描http请求(str)
@@ -98,18 +99,18 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 
 ## 首页截图
 
-1 . 端口与协议发现TOP10
-   ![端口发现TOP10](./img/port.png)
-   ![协议发现TOP10](./img/protocol.png)
-2 .风险端口与协议发现TOP10
-   ![风险端口发现TOP10](./img/riskport.png)
-   ![风险协议发现TOP10](./img/riskprotocol.png)
-3 . web指纹收集TOP10
-   ![Web指纹收集TOP10](./img/webfinger.png)
-4 . xray扫描规则统计TOP10
-   ![xay扫描风险TOP10](./img/xray.png)
-5 . web ssl证书扫描TOP10
-   ![SSL证书TOP10](./img/ssl.png)
+1 . 端口与协议发现
+   ![端口发现](./img/port.png)
+   ![协议发现](./img/protocol.png)
+2 .风险端口与协议发现
+   ![风险端口发现](./img/riskport.png)
+   ![风险协议发现](./img/riskprotocol.png)
+3 . web指纹收集
+   ![Web指纹收集](./img/webfinger.png)
+4 . xray扫描规则统计
+   ![xay扫描风险](./img/xray.png)
+5 . web ssl证书扫描
+   ![SSL证书](./img/ssl.png)
 
 ## 部署方式
 
@@ -122,6 +123,10 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器，否则可能会影响SNAT出口网络，内网扫描可忽略这点
 
 ### 部署过程
+0 .下载文件夹放到服务器后，对文件夹内所有文件赋权
+```
+chmod -R 777 IPWarden
+```
 
 1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
