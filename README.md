@@ -18,8 +18,8 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 4. Web管理后台识别
 5. Xray漏洞扫描
 6. SSL证书信息扫描
-7. 首页汇总数据生成统计图
-8. 所有数据汇总导出为xlsx文档
+7. 首页汇总数据生成统计图概览
+8. 数据汇总xlsx文件导出
 
 ## API
 
@@ -36,7 +36,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 | 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无           | 同序号7                                                   | json     |
 | 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无           | url, payload, plugin, request, updatetime                 | json     |
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无           | url, cms, title, updatetime                               | json     |
-| 12   | 下载所有数据xlsx表格     | GET  | http://127.0.0.1/xlsx         | 无           |                                                           | xlsx     |
+| 12   | 下载xlsx     | GET  | http://127.0.0.1/xlsx         | 无           |                                                           | xlsx     |
 
 ### API返回参数说明
 ```
@@ -48,7 +48,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
    start_date : ssl证书开始日期(str)
    expire_date : ssl证书结束日期(str)
    title : 网站标题(str)
-   backstage : 如果值为1识别为web管理后台，否则为0(int)
+   backstage : 如果值为yes识别为web管理后台，否则为no(str)
    webfinger : web指纹资产,如"nginx"(str)
    cms : web cms识别,如ThinkPHP(str)
    payload : xray扫描poc(str)
@@ -65,14 +65,14 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
       "ip": "192.168.1.1"
       "url": "http://192.168.0.1:7070/"
       "title": "巧克力真好吃"
-      "backstage": 0
+      "backstage": "no"
       "updatetime": "2022-07-13 13:13:58"
    }
    {
       "ip": "192.168.1.2"
       "url": "http://example.com/"
       "title": "XXX管理后台"
-      "backstage": 1。# 值为1代表识别为管理后台
+      "backstage": "yes"  # 值为yes代表识别为管理后台
       "updatetime": "2022-07-13 13:13:58"
    }
 ]
@@ -101,17 +101,19 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 
 ## 首页截图
 
-1 . 端口与协议发现
+1 .端口与协议发现
    ![端口发现](./img/port.png)
    ![协议发现](./img/protocol.png)
 2 .风险端口与协议发现
    ![风险端口发现](./img/riskport.png)
    ![风险协议发现](./img/riskprotocol.png)
-3 . web指纹收集
+3 .Web指纹收集
    ![Web指纹收集](./img/webfinger.png)
-4 . xray扫描规则统计
+4 .Web后台站点占比与HTTP响应码占比
+   ![Web信息](./img/bing.png)
+4 .xray扫描规则统计
    ![xay扫描风险](./img/xray.png)
-5 . web ssl证书扫描
+5 .Web ssl证书扫描
    ![SSL证书](./img/ssl.png)
 
 ## 部署方式
@@ -153,7 +155,7 @@ scanConfig.py
 SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
 SCAN_PORT = '1-10000,11211,27017,27018,50000,50070,50030'  # 设置扫描的端口范围，同masscan参数格式，首次扫描建议使用默认参数，后期可以改为1-65535
 RATE = '10000'  # 扫描线程
-SCAN_WHITE_LIST = '192.168.3.4'  # 不扫描的ip白名单,格式同SCAN_IP
+SCAN_WHITE_LIST = ''  # 不扫描的ip白名单,格式同SCAN_IP
 
 # 要进行Web探测的端口
 WEB_PORT = ['80-90', '443', '2000-10000']
@@ -188,6 +190,7 @@ nohup python3 runIPWarden.py &
 
 服务启动后，默认循环启动所有扫描，坐等通过api收集数据就行。如果目标ip较多，每轮扫描的时间会比较长，第一次扫描建议大半天后再回来看结果
 
-## 使用反馈
+## 写在最后
 
-欢迎师傅们沟通使用过程中的问题或建议～
+啊啊啊啊啊啊！！！
+
