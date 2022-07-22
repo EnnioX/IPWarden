@@ -176,7 +176,7 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
 
-3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改配置文件后需要先用kill.sh停止服务再重新执行命令重启
+3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改scanConfig.py配置文件无需重启服务，下一扫描周期自动重载。如更改serverConfig.py配置文件后需要先用kill.sh停止服务再重新执行命令重启
 
 ```
 nohup python3 runIPWarden.py &
@@ -192,5 +192,5 @@ nohup python3 runIPWarden.py &
 
 ## 写在最后
 
-欢迎添加开发者微信反馈问题或建议～～（Ennio404）
+欢迎添加开发者微信反馈问题或建议：Ennio404
 
