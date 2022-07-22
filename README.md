@@ -22,6 +22,23 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 8. 首页汇总数据生成统计图概览
 9. 数据汇总xlsx文件导出
 
+## 首页截图
+
+1 .端口与协议发现
+   ![端口发现](./img/port.png)
+   ![协议发现](./img/protocol.png)
+2 .风险端口与协议发现
+   ![风险端口发现](./img/riskport.png)
+   ![风险协议发现](./img/riskprotocol.png)
+3 .Web指纹收集
+   ![Web指纹收集](./img/webfinger.png)
+4 .Web后台站点占比与HTTP响应码占比
+   ![Web信息](./img/bing.png)
+4 .xray扫描规则统计
+   ![xay扫描风险](./img/xray.png)
+5 .Web ssl证书扫描
+   ![SSL证书](./img/ssl.png)
+
 ## API
 
 | 序号 | Api用途                  | 方法 | url                           | 请求参数     | 返回字段                                                  | 返回格式 |
@@ -99,23 +116,6 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
    }
 ]
 ```
-
-## 首页截图
-
-1 .端口与协议发现
-   ![端口发现](./img/port.png)
-   ![协议发现](./img/protocol.png)
-2 .风险端口与协议发现
-   ![风险端口发现](./img/riskport.png)
-   ![风险协议发现](./img/riskprotocol.png)
-3 .Web指纹收集
-   ![Web指纹收集](./img/webfinger.png)
-4 .Web后台站点占比与HTTP响应码占比
-   ![Web信息](./img/bing.png)
-4 .xray扫描规则统计
-   ![xay扫描风险](./img/xray.png)
-5 .Web ssl证书扫描
-   ![SSL证书](./img/ssl.png)
 
 ## 部署方式
 
