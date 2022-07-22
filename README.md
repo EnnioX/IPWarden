@@ -132,7 +132,7 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 chmod -R 777 IPWarden
 ```
 
-1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
+1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，分别为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
 serverConfig.py
 
