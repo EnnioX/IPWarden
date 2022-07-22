@@ -129,12 +129,12 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000，否则可能会影响局域网出口网络，内网扫描可忽略这点
 
 ### 部署过程
-0 .下载文件夹放到服务器后，对文件夹内所有文件赋权
+1 .对文件夹内所有文件赋权
 ```
 chmod -R 777 IPWarden
 ```
 
-1 .配置文件修改:进入IPWarden目录，工具有2个配置文件，分别为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
+2 .配置文件修改:进入IPWarden目录，工具有2个配置文件，分别为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
 
 serverConfig.py
 
@@ -172,13 +172,13 @@ RISK_PORT_WHITE_LIST = [['192.25.86.1x', '3306'],['192.25.86.13x', '22']]
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-2 .配置文件设置好后，建议先更新pip源，如已更新可跳过
+3 .配置文件设置好后，建议先更新pip源，如已更新可跳过
 
 ```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
 
-3 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改scanConfig.py配置文件无需重启服务，下一扫描周期自动重载。如更改serverConfig.py配置文件后需要先用kill.sh停止服务再重新执行命令重启
+4 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改scanConfig.py配置文件无需重启服务，下一扫描周期自动重载。如更改serverConfig.py配置文件后需要先用kill.sh停止服务再重新执行命令重启
 
 ```
 nohup python3 runIPWarden.py &
