@@ -119,10 +119,11 @@ IPWarden是一个IP资产风险发现工具，可对大量IP网段目标循环�
 ## 部署方式
 
 ### 部署前环境准备
+1 .Linux
 
-1 .python3
+2 .python3
 
-2 .mysql或mariadb数据库，选择utf-8编码
+3 .mysql或mariadb数据库(utf-8编码)
 
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器，否则可能会影响SNAT出口网络，内网扫描可忽略这点
 
