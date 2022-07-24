@@ -143,7 +143,7 @@ serverConfig.py：设置系统服务端口和数据库连接参数（一般第�
 
 scanConfig.py：设置扫描参数的scanConfig.py
 
-如未来更改scanConfig.py配置文件，无需重启服务下一扫描周期自动应用。如更改serverConfig.py配置文件后需要先执行后面讲的停止服务脚本再重新执行启动命令。
+如未来更改scanConfig.py配置文件，无需重启服务下一扫描周期自动应用。如更改serverConfig.py配置文件后需要用后面讲的方法重新启动。
 
 serverConfig.py
 
@@ -199,7 +199,7 @@ nohup python3 runIPWarden.py &
 ./kill.sh
 ```
 
-服务启动后，默认循环启动所有扫描（可在runIPWarden.py文件自行修改选择模块，web_scan.py是后续web相关扫描的基础模块），坐等以后通过api收集数据和看首页统计图就好。如果目标ip较多，每轮扫描的时间会比较长，第一次扫描建议一天后再回来看结果
+服务启动后，默认循环启动所有扫描（可在runIPWarden.py文件自行修改选择模块，web_scan.py是后续web相关扫描的基础模块），就可以坐等通过api收集数据和看首页统计图了。如果目标ip数较多，每轮扫描的时间会比较长，发现的web多的话xray扫描也会比较耗时，第一次扫描建议一天后再回来看结果。
 
 ## 写在最后
 
