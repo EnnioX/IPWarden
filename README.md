@@ -130,13 +130,13 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 3 .mysql或mariadb数据库(utf-8编码,数据库可不在本地)
 
 ### 部署过程
-1 .配置文件修改:进入IPWarden目录,2个配置文件说明如下：
+1 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
 
 serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
 
 scanConfig.py: 设置扫描参数的scanConfig.py
 
-如后续更改scanConfig.py配置,无需重启服务,下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
+如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
 
 serverConfig.py
 
@@ -158,7 +158,7 @@ scanConfig.py
 # masscan参数
 SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
 SCAN_PORT = '1-65535'  # 设置扫描的端口范围，同masscan参数格式
-RATE = '10000'  # 扫描线程,如果扫描公网IP,建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000
+RATE = '10000'  # 扫描线程，如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000
 SCAN_WHITE_LIST = ''  # 不扫描的ip白名单，同masscan参数格式
 
 # 要进行Web探测的端口
@@ -167,7 +167,7 @@ WEB_PORT = ['1-65535']  # 按需设置，我习惯暴力设置1-65535
 # Web管理后台关键词
 WEB_BACKSTAGE = ['login', 'admin', '登录', '管理后台', '系统后台', '管理系统']
 
-# 风险端口白名单,使用序号5api请求返回数据不包含以下数据,序号4api返回包括白名单内风险端口
+# 风险端口白名单,使用序号5api请求返回数据不包含以下数据，序号4api返回包括白名单内风险端口
 RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 
 # 自定义风险端口
@@ -187,7 +187,7 @@ pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-h
 nohup python3 runIPWarden.py &
 ```
 
-停止服务：在IPWarden文件夹路径下执行如下命令停止运行
+停止服务: 在IPWarden文件夹路径下执行如下命令停止运行
 
 ```
 ./kill.sh
