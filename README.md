@@ -137,7 +137,13 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 chmod -R 777 IPWarden
 ```
 
-2 .配置文件修改:进入IPWarden目录，工具有2个配置文件，分别为设置系统服务端口和数据库连接的serverConfig.py和设置扫描参数的scanConfig.py
+2 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
+
+serverConfig.py：设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
+
+scanConfig.py：设置扫描参数的scanConfig.py
+
+如未来更改scanConfig.py配置文件，无需重启服务下一扫描周期自动应用。如更改serverConfig.py配置文件后需要先执行后面讲的停止服务脚本再重新执行启动命令。
 
 serverConfig.py
 
@@ -181,7 +187,7 @@ RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 ```
 
-4 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控，更改scanConfig.py配置文件无需重启服务，下一扫描周期自动重载。如更改serverConfig.py配置文件后需要先用kill.sh停止服务再重新执行命令重启
+4 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控。
 
 ```
 nohup python3 runIPWarden.py &
