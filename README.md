@@ -115,11 +115,18 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 3 .mysql或mariadb数据库(utf-8编码,数据库可不在本地)
 
 ### 部署过程
+0 .为了使首页的图片正常生成，需要安装矢量图形函数库cairo，如果只想通过api获取数据或下载xlsx表格，不看统计图可忽略这步
+```
+# 以centos系统为例
+yum install glib-devel -y
+yum install atk-devel -y
+yum install pango-devel -y
+yum install cairo-devel -y
+```
 
 1 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
 
 serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
-
 scanConfig.py: 设置扫描参数的scanConfig.py
 
 如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
