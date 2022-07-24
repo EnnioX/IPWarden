@@ -132,7 +132,7 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 注意；如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000，否则可能会影响局域网出口网络，内网扫描可忽略这点
 
 ### 部署过程
-1 .对文件夹内所有文件赋权
+1 .解压拷贝到服务器后，对项目文件夹赋权（测试环境直接梭哈777）
 ```
 chmod -R 777 IPWarden
 ```
@@ -150,7 +150,7 @@ MYSQL_HOST = '127.0.0.1'  # 此处修改为数据库IP地址
 MYSQL_PORT = 3306  # 此处修改为数据库端口
 MYSQL_USER = 'root'  # 数据库连接用户名
 MYSQL_PASSWORD = 'password'  # 数据库连接密码
-MYSQL_DATABASE = 'IPWarden'  # 库名
+MYSQL_DATABASE = ''  # 库名
 ```
 
 scanConfig.py
@@ -169,13 +169,13 @@ WEB_PORT = ['80-10000', '50000']  # 按需设置，暴力设置1-65535也可
 WEB_BACKSTAGE = ['login', 'admin', '登录', '管理后台', '系统后台', '管理系统']
 
 # 风险端口白名单,使用序号5api请求返回数据不包含以下数据
-RISK_PORT_WHITE_LIST = [['192.25.86.1x', '3306'],['192.25.86.13x', '22']]
+RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 
-# 定义风险端口
+# 自定义风险端口
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-3 .配置文件设置好后，建议先更新pip源，如已更新可跳过
+3 .配置文件修改好后，建议先更新pip源，如已更新可跳过
 
 ```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
@@ -193,7 +193,7 @@ nohup python3 runIPWarden.py &
 ./kill.sh
 ```
 
-服务启动后，默认循环启动所有扫描，坐等通过api收集数据就行。如果目标ip较多，每轮扫描的时间会比较长，第一次扫描建议一天后再回来看结果
+服务启动后，默认循环启动所有扫描（可在runIPWarden.py文件自行修改选择模块，web_scan.py是后续web相关扫描的基础模块），坐等以后通过api收集数据和看首页统计图就好。如果目标ip较多，每轮扫描的时间会比较长，第一次扫描建议一天后再回来看结果
 
 ## 写在最后
 
