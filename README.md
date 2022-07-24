@@ -126,8 +126,9 @@ yum install cairo-devel -y
 
 1 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
 
-serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
-scanConfig.py: 设置扫描参数的scanConfig.py
+   serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
+
+   scanConfig.py: 设置扫描参数的scanConfig.py
 
 如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
 
