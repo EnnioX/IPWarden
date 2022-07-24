@@ -125,7 +125,7 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 ### 部署前环境准备
 1 .Linux
 
-2 .python3.8+
+2 .python3
 
 3 .mysql或mariadb数据库(utf-8编码，数据库可不在本地)
 
