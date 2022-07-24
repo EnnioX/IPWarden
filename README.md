@@ -181,19 +181,20 @@ RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-3 .配置文件修改好后，建议先更新pip源，如已更新可跳过
+3 .在IPWarden文件夹路径下执行如下命令导入依赖
 
 ```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 ```
 
-4 .在IPWarden目录下使用如下命令后台执行runIPWarden.py开始循环监控。
+4 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
 
 ```
 nohup python3 runIPWarden.py &
 ```
 
-停止服务：在IPWarden目录下使用如下命令执行kill.sh文件
+停止服务：在IPWarden文件夹路径下执行如下命令停止运行
 
 ```
 ./kill.sh
