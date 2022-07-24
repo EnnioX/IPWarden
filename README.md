@@ -127,34 +127,27 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 
 2 .python3
 
-3 .mysql或mariadb数据库(utf-8编码，数据库可不在本地)
-
-注意；如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000，否则可能会影响局域网出口网络，内网扫描可忽略这点
+3 .mysql或mariadb数据库(utf-8编码,数据库可不在本地)
 
 ### 部署过程
-1 .解压拷贝到服务器后，对项目文件夹赋权（测试环境直接梭哈777）
-```
-chmod -R 777 IPWarden
-```
+1 .配置文件修改:进入IPWarden目录,2个配置文件说明如下：
 
-2 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
+serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
 
-serverConfig.py：设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
+scanConfig.py: 设置扫描参数的scanConfig.py
 
-scanConfig.py：设置扫描参数的scanConfig.py
-
-如未来更改scanConfig.py配置文件，无需重启服务下一扫描周期自动应用。如更改serverConfig.py配置文件后需要用后面讲的方法重新启动。
+如后续更改scanConfig.py配置,无需重启服务,下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
 
 serverConfig.py
 
 ```
 # 系统基础参数
-API_PORT = 80  # 设置为希望开放的服务端口
+API_PORT = 80  # 首页、api服务端口
 
 # mysql配置
-MYSQL_HOST = '127.0.0.1'  # 此处修改为数据库IP地址
-MYSQL_PORT = 3306  # 此处修改为数据库端口
-MYSQL_USER = 'root'  # 数据库连接用户名
+MYSQL_HOST = '127.0.0.1'  # 要连接的数据库地址
+MYSQL_PORT = 3306  # 数据库端口
+MYSQL_USER = 'root'  # 数据库用户名
 MYSQL_PASSWORD = 'password'  # 数据库连接密码
 MYSQL_DATABASE = ''  # 库名
 ```
@@ -165,16 +158,16 @@ scanConfig.py
 # masscan参数
 SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
 SCAN_PORT = '1-65535'  # 设置扫描的端口范围，同masscan参数格式
-RATE = '10000'  # 扫描线程
-SCAN_WHITE_LIST = ''  # 不扫描的ip白名单,格式同SCAN_IP
+RATE = '10000'  # 扫描线程,如果扫描公网IP,建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000
+SCAN_WHITE_LIST = ''  # 不扫描的ip白名单，同masscan参数格式
 
 # 要进行Web探测的端口
-WEB_PORT = ['80-10000', '50000']  # 按需设置，暴力设置1-65535也可
+WEB_PORT = ['1-65535']  # 按需设置，我习惯暴力设置1-65535
 
 # Web管理后台关键词
 WEB_BACKSTAGE = ['login', 'admin', '登录', '管理后台', '系统后台', '管理系统']
 
-# 风险端口白名单,使用序号5api请求返回数据不包含以下数据
+# 风险端口白名单,使用序号5api请求返回数据不包含以下数据,序号4api返回包括白名单内风险端口
 RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 
 # 自定义风险端口
@@ -200,5 +193,5 @@ nohup python3 runIPWarden.py &
 ./kill.sh
 ```
 
-服务启动后，默认循环启动所有扫描（可在runIPWarden.py文件自行修改选择模块，web_scan.py是后续web相关扫描的基础模块），就可以坐等通过api收集数据和看首页统计图了。如果目标ip数较多，每轮扫描的时间会比较长，发现的web多的话xray扫描也会比较耗时，第一次扫描建议一天后再回来看结果。
+服务启动后，默认循环启动所有扫描，就可以坐等通过api收集数据和看首页统计图了。如果目标ip数较多，每轮扫描的时间会比较长，发现web多的话xray扫描也会比较耗时，第一次扫描建议一天后再回来看结果。
 
