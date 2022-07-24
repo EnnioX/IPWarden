@@ -59,25 +59,6 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无           | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
 | 12   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无           |                                                                                                                                                                    | xlsx     |
 
-### API返回参数说明
-
-```
-   ip : ip地址(str)
-   port : 端口(str)
-   protocol : 端口协议(str)
-   url : 访问地址(str)
-   common_name : ssl证书名称(str)
-   start_date : ssl证书开始日期(str)
-   expire_date : ssl证书结束日期(str)
-   title : 网站标题(str)
-   backstage : 如果值为yes识别为web管理后台，否则为no(str)
-   webfinger : web指纹资产,如"nginx"(str)
-   cms : web cms识别,如ThinkPHP(str)
-   payload : xray扫描poc(str)
-   plugin : xray扫描规则(str)
-   request : xray扫描http请求(str)
-   updatetime : 扫描更新时间(str)
-```
 
 ### Web站点探测API返回示例（http://127.0.0.1/web）
 
