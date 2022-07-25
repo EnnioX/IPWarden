@@ -58,8 +58,8 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 | 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无           | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无           | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
 | 12   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无           |                                                                                                                                                                    | xlsx     |
-</font>
 
+</font>
 ### Web站点探测API返回示例（http://127.0.0.1/web）
 
 ```
