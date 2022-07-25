@@ -115,23 +115,19 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 3 .mysql或mariadb数据库(utf-8编码,数据库可不在本地)
 
 ### 部署过程
-1 .为了使首页的图片正常生成，需要安装矢量图形函数库cairo，如果只想通过api获取数据或下载xlsx表格，不看统计图可忽略这步
+1 .在IPWarden文件夹路径下执行如下命令安装cairo库和导入依赖
+
 ```
-# 以centos系统为例
+# 以RedHat系centos系统为例，Debian系要把yum改为apt-get
 yum install glib-devel -y
 yum install atk-devel -y
 yum install pango-devel -y
 yum install cairo-devel -y
-```
-
-2 .在IPWarden文件夹路径下执行如下命令导入依赖
-
-```
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 ```
 
-3 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
+2 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
 
 &ensp;&ensp;serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
 
@@ -175,7 +171,7 @@ RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-4 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
+3 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
 
 ```
 nohup python3 runIPWarden.py &
