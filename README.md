@@ -112,7 +112,7 @@ PS:Warden是War3中的英雄守望者的英文名，纪念一下沉迷魔兽的�
 
 2 .python3
 
-3 .mysql或mariadb数据库(utf-8编码,数据库可不在本地)
+3 .mysql或mariadb数据库(字符集:utf8mb4,数据库可不在本地)
 
 ### 部署过程
 1 .在IPWarden文件夹路径下执行如下命令安装cairo库和导入依赖
