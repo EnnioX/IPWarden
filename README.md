@@ -154,9 +154,9 @@ pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-h
 
 2 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
 
-&ensp;&ensp;serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
+&ensp;&ensp;1)serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
 
-&ensp;&ensp;scanConfig.py: 设置扫描参数的scanConfig.py
+&ensp;&ensp;2)scanConfig.py: 设置扫描参数的scanConfig.py
 
 如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
 
@@ -212,4 +212,4 @@ nohup python3 runIPWarden.py &
 
 ## 写在最后
 
-作者是卑微甲方安全人员，会持续更新完善本工具，欢迎添加开发者微信Ennio404反馈问题或建议
+作者会持续更新完善本工具，欢迎添加开发者微信Ennio404反馈问题或建议
