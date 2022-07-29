@@ -118,7 +118,7 @@ IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，更新�
 
 ### 部署过程
 
-1 .在IPWarden文件夹路径下执行如下命令安装cairo库和导入依赖
+1 .在IPWarden文件夹路径下执行如下命令安装cairo、nfs库和导入依赖
 
 ```
 # 以RedHat系centos系统为例，Debian系要把yum改为apt-get
@@ -126,6 +126,7 @@ yum install glib-devel -y
 yum install atk-devel -y
 yum install pango-devel -y
 yum install cairo-devel -y
+yum install nfs-utils -y
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 ```
