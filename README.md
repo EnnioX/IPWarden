@@ -6,11 +6,11 @@
 
 ## 简介
 
-IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，更新风险数据。在主机、端口、协议发现与风险端口管理的基础上，对常见端口未授权访问漏洞进行POC测试，探测Web资产并对Web资产进行组件指纹扫描、CMS识别、管理后台识别、ssl证书收集、xray漏洞扫描。本工具特点为所有结果均可循环扫描更新并通过API返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控并管理公网/内网IP资产风险暴露面。
+IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，更新风险数据。在主机、端口、协议发现与风险端口管理的基础上，对常见端口未授权访问漏洞进行POC测试，探测Web资产并对Web资产进行组件指纹扫描、CMS识别、管理后台识别、ssl证书收集、xray漏洞扫描。
 
-集成的工具有:nmap、masscan、TideFinger、xray
+本工具特点：所有结果均可循环扫描更新并通过API返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控并管理公网/内网IP资产风险暴露面。
 
-PS:Warden是War3中英雄守望者的英文名
+集成的工具有:nmap、masscan、TideFinger、xray。PS:Warden是War3中英雄守望者的英文名
 
 ## 功能
 
@@ -46,21 +46,21 @@ PS:Warden是War3中英雄守望者的英文名
 
 ## API
 
-| 序号 | Api用途                  | 方法 | url                           | 请求参数              | 返回字段                                                                                                                                                           | 返回格式 |
-| ---- | ------------------------ | ---- | ----------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| 1    | 查询全部IP开放端口数据   | GET  | http://127.0.0.1/portsdata    | 无                    | ip : ip地址<br />port : 端口<br />protocol : 端口协议<br />updatetime : 扫描更新时间                                                                               | json     |
-| 2    | 查询指定ip开放的端口     | GET  | http://127.0.0.1/ip=10.0.0.1  | ip                    | port : 端口<br />protocol : 端口协议<br />updatetime : 扫描更新时间                                                                                                | json     |
-| 3    | 查询开放指定端口的ip     | GET  | http://127.0.0.1/port=22      | port                  | ip : ip地址<br />updatetime : 扫描更新时间                                                                                                                         | json     |
-| 4    | 查询全部风险端口数据     | GET  | http://127.0.0.1/riskports    | 无                    | 同序号1                                                                                                                                                            | json     |
-| 5    | 查询白名单外风险端口数据 | GET  | http://127.0.0.1/newriskports | 无                    | 同序号1                                                                                                                                                            | json     |
-| 6    | 查询SSL证书数据          | GET  | http://127.0.0.1/ssl          | 无                    | ip : ip地址<br />url : 访问地址<br />common_name : ssl证书名称<br />start_date : ssl证书开始日期<br />expire_date : ssl证书结束日期<br />updatetime : 扫描更新时间 | json     |
-| 7    | Web站点探测              | GET  | http://127.0.0.1/web          | 无                    | ip : ip地址<br />port : 端口<br />url : 访问地址<br />title : 网站标题<br />backstage : yes代表识别为web管理后台，否则为no<br />updatetime : 扫描更新时间          | json     |
-| 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无                    | url : 访问地址<br />title : 网站标题<br />webfinger : web指纹资产<br />updatetime : 扫描更新时间                                                                   | json     |
-| 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无                    | 同序号7                                                                                                                                                            | json     |
-| 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无                    | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
-| 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无                    | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
-| 12   | 端口漏洞POC扫描结果      | GET  | http://127.0.0.1/portvuln     | 无                    | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
-| 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | http://127.0.0.1/xlsx |                                                                                                                                                                    | xlsx     |
+| 序号 | Api用途                  | 方法 | url                           | 请求参数 | 返回字段                                                                                                                                                           | 返回格式 |
+| ---- | ------------------------ | ---- | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| 1    | 查询全部IP开放端口数据   | GET  | http://127.0.0.1/portsdata    | 无       | ip : ip地址<br />port : 端口<br />protocol : 端口协议<br />updatetime : 扫描更新时间                                                                               | json     |
+| 2    | 查询指定ip开放的端口     | GET  | http://127.0.0.1/ip=10.0.0.1  | ip       | port : 端口<br />protocol : 端口协议<br />updatetime : 扫描更新时间                                                                                                | json     |
+| 3    | 查询开放指定端口的ip     | GET  | http://127.0.0.1/port=22      | port     | ip : ip地址<br />updatetime : 扫描更新时间                                                                                                                         | json     |
+| 4    | 查询全部风险端口数据     | GET  | http://127.0.0.1/riskports    | 无       | 同序号1                                                                                                                                                            | json     |
+| 5    | 查询白名单外风险端口数据 | GET  | http://127.0.0.1/newriskports | 无       | 同序号1                                                                                                                                                            | json     |
+| 6    | 查询SSL证书数据          | GET  | http://127.0.0.1/ssl          | 无       | ip : ip地址<br />url : 访问地址<br />common_name : ssl证书名称<br />start_date : ssl证书开始日期<br />expire_date : ssl证书结束日期<br />updatetime : 扫描更新时间 | json     |
+| 7    | Web站点探测              | GET  | http://127.0.0.1/web          | 无       | ip : ip地址<br />port : 端口<br />url : 访问地址<br />title : 网站标题<br />backstage : yes代表识别为web管理后台，否则为no<br />updatetime : 扫描更新时间          | json     |
+| 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无       | url : 访问地址<br />title : 网站标题<br />webfinger : web指纹资产<br />updatetime : 扫描更新时间                                                                   | json     |
+| 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无       | 同序号7                                                                                                                                                            | json     |
+| 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无       | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
+| 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无       | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
+| 12   | 端口漏洞POC扫描结果      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
+| 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无       |                                                                                                                                                                    | xlsx     |
 
 ### Web站点探测API返回示例（http://127.0.0.1/web）
 
