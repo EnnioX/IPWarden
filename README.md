@@ -6,16 +6,16 @@
 
 ## 简介
 
-IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，更新风险数据。在主机、端口、协议发现与风险端口管理的基础上，对常见端口未授权访问漏洞进行POC测试，探测Web资产并对Web资产进行组件指纹扫描、CMS识别、管理后台识别、ssl证书收集、xray漏洞扫描。
+IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，实效性发现暴露风险。在主机、端口、协议发现与风险端口管理的基础上，扫描端口服务的未授权访问漏洞，探测Web资产并对Web资产进行组件指纹扫描、CMS识别、管理后台识别、ssl证书信息收集、xray漏洞扫描。
 
-本工具特点：所有结果均可循环扫描更新并通过API返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控并管理公网/内网IP资产风险暴露面。
+本工具特点：所有结果均可循环扫描更新并通过API返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控与管理公网/内网IP资产风险暴露面。
 
 集成的工具有:nmap、masscan、TideFinger、xray。PS:Warden是War3中英雄守望者的英文名
 
 ## 功能
 
 1. 主机、端口&协议发现
-2. 端口漏洞扫描(POC持续更新)
+2. 端口未授权漏洞扫描(POC持续更新)
 3. Web站点探测
 4. Web组件指纹信息收集
 5. Web CMS识别
@@ -59,7 +59,7 @@ IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，更新�
 | 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无       | 同序号7                                                                                                                                                            | json     |
 | 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无       | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无       | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
-| 12   | 端口漏洞POC扫描结果      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
+| 12   | 端口未授权漏洞扫描      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
 | 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无       |                                                                                                                                                                    | xlsx     |
 
 ### Web站点探测API返回示例（http://127.0.0.1/web）
