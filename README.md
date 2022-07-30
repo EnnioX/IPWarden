@@ -55,7 +55,7 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 | 7    | Web站点探测              | GET  | http://127.0.0.1/web          | 无       | ip : ip地址<br />port : 端口<br />url : 访问地址<br />title : 网站标题<br />backstage : yes代表识别为web管理后台，否则为no<br />updatetime : 扫描更新时间          | json     |
 | 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无       | url : 访问地址<br />title : 网站标题<br />webfinger : web指纹资产<br />updatetime : 扫描更新时间                                                                   | json     |
 | 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无       | 同序号7                                                                                                                                                            | json     |
-| 10   | Xray+rad扫描                 | GET  | http://127.0.0.1/xray         | 无       | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
+| 10   | Xray+rad扫描                 | GET  | http://127.0.0.1/xray         | 无       | 太多辣～ 参考xray指南                                | json     |
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无       | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
 | 12   | 未授权访问服务漏洞      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
 | 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无       |                                                                                                                                                                    | xlsx     |
@@ -160,7 +160,7 @@ serverConfig.py
 API_PORT = 80  # 首页、api服务端口
 
 # mysql配置
-MYSQL_HOST = '127.0.0.1'  # 要连接的数据库地址
+MYSQL_HOST = ''  # 要连接的数据库地址
 MYSQL_PORT = 3306  # 数据库端口
 MYSQL_USER = 'root'  # 数据库用户名
 MYSQL_PASSWORD = 'password'  # 数据库连接密码
