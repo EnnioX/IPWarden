@@ -140,15 +140,21 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 
 ### 部署过程
 
-1 .在IPWarden文件夹路径下执行如下命令安装cairo、nfs库和导入依赖
+1 .在IPWarden文件夹路径下执行如下命令安装cairo、chrome、nfs库和导入依赖
 
 ```
-# 以RedHat系centos系统为例，Debian系要把yum改为apt-get
+# 以centos系统为例
 yum install glib-devel -y
 yum install atk-devel -y
 yum install pango-devel -y
 yum install cairo-devel -y
+
 yum install nfs-utils -y
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+yum update glib2 -y
+yum localinstall google-chrome-stable_current_x86_64.rpm -y
+
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 
