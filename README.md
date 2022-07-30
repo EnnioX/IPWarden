@@ -140,7 +140,7 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 
 ### 部署过程
 
-1 .在IPWarden文件夹路径下执行如下命令安装cairo、chrome、nfs库和导入依赖
+1 .在IPWarden文件夹路径下执行如下命令安装cairo、chrome、nfs库和导入依赖,可一键复制运行
 
 ```
 # 以centos系统为例
@@ -160,7 +160,14 @@ pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-h
 
 ```
 
-2 .填写配置文件:进入IPWarden目录，2个配置文件说明如下：大多数参数可使用默认，重点为scanConfig.py和scanConfig.py中要扫描的目标IP
+2 .如果使用root账号运行，需要允许root使用chrome沙箱，做如下修改
+```
+vim /usr/bin/google-chrome
+找到 exec -a "$0" "$HERE/chrome" "$@" 将其注释掉
+并添加一行 exec -a "$0" "$HERE/chrome" "$@" --user-data-dir --no-sandbox
+```
+
+3 .填写配置文件:进入IPWarden目录，2个配置文件说明如下：大多数参数可使用默认，重点为scanConfig.py和scanConfig.py中要扫描的目标IP
 ```
 serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
 scanConfig.py: 设置扫描参数的scanConfig.py
@@ -203,7 +210,7 @@ RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-3 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
+4 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
 
 ```
 nohup python3 runIPWarden.py &
