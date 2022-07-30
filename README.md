@@ -6,24 +6,24 @@
 
 ## 简介
 
-IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，实效性发现暴露风险。在主机、端口、协议发现与风险端口管理的基础上：1）扫描端口服务的未授权访问漏洞；2）探测Web资产并对Web资产开展xray联动rad漏洞扫描、组件指纹扫描、管理后台识别、CMS识别、ssl证书信息收集。特点：所有扫描结果循环更新并可通过API请求返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控与管理公网/内网IP资产风险暴露面。
+IPWarden是一个IP资产风险发现工具，可循环扫描IP资产，具有实效性地发现安全风险。在主机、端口、协议发现与风险端口管理的基础上：1）探测未授权访问服务漏洞；2）探测Web资产并对Web资产开展xray融合rad漏洞扫描、组件指纹扫描、管理后台识别、CMS识别、ssl证书信息收集。特点：通过IP一条龙挖掘系统服务、Web两个维度的信息、风险及漏洞。所有扫描结果循环更新并可通过API请求返回json数据和导出xlsx表格，方便二次开发与数据加工。适合甲方安全人员持续监控与管理公网/内网IP资产风险暴露面。
 
-集成的工具有:nmap、masscan、TideFinger、xray。
+集成的工具有:nmap、masscan、TideFinger、xray、rad。
 
 PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 
 ## 功能
 
 1. 主机、端口、协议发现
-2. 端口服务未授权访问漏洞扫描(POC持续更新)
+2. 未授权访问服务漏洞扫描(POC持续更新)
 3. Web站点探测
-4. Web组件指纹信息收集
-5. Web CMS识别
-6. Web管理后台识别
-7. Xray漏洞扫描
+4. xray融合rad漏洞扫描
+5. Web组件指纹信息收集
+6. Web CMS识别
+7. Web管理后台识别
 8. SSL证书信息扫描
-9. 首页汇总数据生成统计图概览
-10. 数据汇总xlsx文件导出
+9. 首页汇总数据生成统计图
+10. 数据汇总xlsx文件导出(xray扫描信息只导出基本字段信息到表格，更多漏洞详情与请求响应包可通过API查询)
 
 ## 首页截图
 
@@ -57,9 +57,9 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 | 7    | Web站点探测              | GET  | http://127.0.0.1/web          | 无       | ip : ip地址<br />port : 端口<br />url : 访问地址<br />title : 网站标题<br />backstage : yes代表识别为web管理后台，否则为no<br />updatetime : 扫描更新时间          | json     |
 | 8    | Web Finger信息           | GET  | http://127.0.0.1/webfinger    | 无       | url : 访问地址<br />title : 网站标题<br />webfinger : web指纹资产<br />updatetime : 扫描更新时间                                                                   | json     |
 | 9    | Web管理后台站点探测      | GET  | http://127.0.0.1/backstage    | 无       | 同序号7                                                                                                                                                            | json     |
-| 10   | Xray扫描                 | GET  | http://127.0.0.1/xray         | 无       | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
+| 10   | Xray+rad扫描                 | GET  | http://127.0.0.1/xray         | 无       | url : 访问地址<br />payload : xray扫描poc<br />plugin : xray扫描规则<br />request : xray扫描http请求<br />updatetime : 扫描更新时间                                | json     |
 | 11   | Web cms信息              | GET  | http://127.0.0.1/cms          | 无       | url : 访问地址<br />cms : 识别到的web cms<br />title : 网站标题<br />updatetime : 扫描更新时间                                                                     | json     |
-| 12   | 端口服务未授权访问漏洞      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
+| 12   | 未授权访问服务漏洞      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
 | 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无       |                                                                                                                                                                    | xlsx     |
 
 ## API返回示例
@@ -108,31 +108,13 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 ```
 
 ### xray扫描（http://127.0.0.1/xray）
-
-```
-[
-   {
-      "url": "https://1x3.x1.xx0.2x8:443/"
-      "payload": "/admin.do"
-      "plugin": "dirscan/admin/default"
-      "request": "GET /admin.do HTTP/1.1\r\nHost: 1x3.x1.xx0.2x8:443\r\nUser-..."
-      "updatetime": "2022-07-13 19:11:03"
-   }
-   {
-      "url": "http://x4.x3.1x2.x99/admin/login.jsp"
-      "payload": ""
-      "plugin": "baseline/sensitive/server-error"
-      "request": "GET /admin/mailsms/s?func=ADMIN:appState&dumpConfig=/ HTTP/1.1\r\nHo..."
-      "updatetime": "2022-07-13 19:18:00"
-   }
-]
-```
+![xay扫描风险](./img/xrayapi.png)
 
 ## 部署方式
 
 ### 部署前环境准备
 
-1 .Linux
+1 .centos7
 
 2 .python3
 
@@ -143,7 +125,6 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 1 .在IPWarden文件夹路径下执行如下命令安装cairo、chrome、nfs库和导入依赖,可一键复制运行
 
 ```
-# 以centos系统为例
 yum install glib-devel -y
 yum install atk-devel -y
 yum install pango-devel -y
@@ -206,11 +187,14 @@ WEB_BACKSTAGE = ['login', 'admin', '登录', '管理后台', '系统后台', '�
 # 风险端口白名单,使用序号5api请求返回数据不包含以下数据，序号4api返回包括白名单内风险端口
 RISK_PORT_WHITE_LIST = [['192.168.86.14', '3306'],['192.168.86.13', '22']]
 
+# 选择是否要对发现的web页面xray联动rad扫描，1代表执行扫描，0为不扫描
+XRAY_RAD = 1
+
 # 自定义风险端口
 RISK_PORT_LIST = ['21','22','3389'...]  # 可采用配置文件中默认数据
 ```
 
-4 .在IPWarden文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控
+4 .赋予IPWarden文件夹及子文件执行权限，在文件夹路径下执行如下命令后台执行runIPWarden.py开始循环监控（不要重定向日志）
 
 ```
 nohup python3 runIPWarden.py &
