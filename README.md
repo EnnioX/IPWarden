@@ -44,7 +44,7 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 7 .Web ssl证书扫描
    ![SSL证书](./img/ssl.png)
 
-## API
+## API清单
 
 | 序号 | Api用途                  | 方法 | url                           | 请求参数 | 返回字段                                                                                                                                                           | 返回格式 |
 | ---- | ------------------------ | ---- | ----------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
@@ -62,7 +62,8 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 | 12   | 端口服务未授权访问漏洞      | GET  | http://127.0.0.1/portvuln     | 无       | ip : ip地址<br />port : 端口<br />vuln : 漏洞名称<br />detail : 漏洞详情<br />updatetime : 扫描更新时间                                                            | json     |
 | 13   | 下载xlsx                 | GET  | http://127.0.0.1/xlsx         | 无       |                                                                                                                                                                    | xlsx     |
 
-### 端口服务未授权访问漏洞API返回示例（http://127.0.0.1/portvuln）
+## API返回示例
+### 端口服务未授权访问漏洞（http://127.0.0.1/portvuln）
 
 ```
 [
@@ -83,7 +84,7 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 ]
 ```
 
-### Web站点探测API返回示例（http://127.0.0.1/web）
+### Web站点探测（http://127.0.0.1/web）
 
 ```
 [
@@ -106,7 +107,7 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 ]
 ```
 
-### xray扫描API返回示例（http://127.0.0.1/xray）
+### xray扫描（http://127.0.0.1/xray）
 
 ```
 [
@@ -150,15 +151,15 @@ yum install cairo-devel -y
 yum install nfs-utils -y
 pip3 install --upgrade pip -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 pip3 install -r requirements.txt  -i https://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
 ```
 
-2 .配置文件修改:进入IPWarden目录，2个配置文件说明如下：
-
-&ensp;&ensp;1)serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
-
-&ensp;&ensp;2)scanConfig.py: 设置扫描参数的scanConfig.py
-
-如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py后需要用后面讲的方法重新启动。
+2 .填写配置文件:进入IPWarden目录，2个配置文件说明如下：大多数参数可使用默认，重点为scanConfig.py和scanConfig.py中要扫描的目标IP
+```
+serverConfig.py: 设置系统服务端口和数据库连接参数（一般第一次设置好后不会变动）
+scanConfig.py: 设置扫描参数的scanConfig.py
+```
+如后续更改scanConfig.py配置，无需重启服务，下一扫描周期自动应用。更改serverConfig.py需要重新启动。
 
 serverConfig.py
 
@@ -179,8 +180,8 @@ scanConfig.py
 ```
 # masscan参数
 SCAN_IP = '192.168.1.1,10.0.8.0/24,10.0.1.110-10.0.1.150'  # 选择扫描的目标IP，同masscan参数格式
-SCAN_PORT = '1-10000'  # 设置扫描的端口范围，同masscan参数格式，可暴力设置1-65535
-RATE = '10000'  # 扫描线程，如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于1000
+SCAN_PORT = '1-10000,11211,27017,27018,50000,50070,50030'  # 设置扫描的端口范围，同masscan参数格式，可暴力设置1-65535
+RATE = '10000'  # 扫描线程，如果扫描公网IP，建议使用有独立公网IP的云服务器或者调低masscan扫描线程小于4000
 SCAN_WHITE_LIST = ''  # 不扫描的ip白名单，同masscan参数格式
 
 # 要进行Web探测的端口
@@ -208,7 +209,7 @@ nohup python3 runIPWarden.py &
 ./kill.sh
 ```
 
-服务启动后，默认循环启动所有扫描，就可以坐等通过api收集数据和看首页统计图了。如果目标ip数较多，每轮扫描的时间会比较长，发现web多的话xray扫描也会比较耗时，第一次扫描建议一天后再回来看结果。
+服务启动后，默认循环启动所有扫描，就可以坐等通过api收集数据和看首页统计图了。如果目标ip数较多，每轮扫描的时间会比较长，发现web多的话xray扫描也会比较耗时，可选择自定义是否调用xray扫描模块。
 
 ## 写在最后
 
