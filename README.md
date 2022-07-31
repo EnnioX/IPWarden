@@ -31,15 +31,17 @@ PS:Warden是War3中英雄守望者的英文名，好久没玩魔兽了==
 2 .风险端口与协议发现
    ![风险端口发现](./img/riskport.png)
    ![风险协议发现](./img/riskprotocol.png)
-3 .Web指纹收集
+3 .xray融合rad漏洞扫描漏洞数统计
+   ![xray](./img/xrayvuln.png)
+4 .Web组件指纹收集
    ![Web指纹收集](./img/webfinger.png)
-4 .Web后台站点占比与全部站点响应码占比
+5 .Web后台发现比例图、HTTP响应码比例图
    ![Web信息](./img/bing.png)
-5 .开放Web服务端口统计
+6 .开放Web服务端口统计
    ![Web信息](./img/webport.png)
-6 .xray扫描规则统计
+7 .xray扫描规则统计
    ![xay扫描风险](./img/xray.png)
-7 .Web ssl证书扫描
+8 .Web ssl证书扫描
    ![SSL证书](./img/ssl.png)
 
 ## API清单
